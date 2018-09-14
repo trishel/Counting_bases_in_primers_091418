@@ -21,7 +21,7 @@
 # expr $(head -n 2 "$@" | tail -1 | wc -m) - 1
 for file in "$@"
 do
-FILENAME=$(basename $file .fasta)
-COUNT=$(expr $(head -n 2 $file | tail -1 | wc -m) - 1)
-  echo In $FILENAME, there are $COUNT nucleotides  
+FILENAME=$(basename "$file" .fasta)
+COUNT=$(head -n 2 "$file" | tail -1 | tr -d '\n' | wc -m | tr -d " ")
+  echo In "$FILENAME", there are "$COUNT" nucleotides
 done
